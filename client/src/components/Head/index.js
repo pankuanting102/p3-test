@@ -1,14 +1,23 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import useLogRender from "../../utils/useLogPath";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import Login from "../../assets/Login@2x.png";
+import "./index.css";
 
 function Nav() {
-	useLogRender();
-
-	return (
-		<nav>
-			<h1 className='mt-0 ml-0 mb-3 text-dark p-4 pt-3 pl-3'>Express Sequelize box</h1>
-		</nav>
-	);
+  return (
+    <nav className="topnav">
+      <div>
+        <Link to="/" className="nav-left" style={{color: "black" }}>
+          WASTE OF TIME
+        </Link>
+        <Link to="/Login" >
+          <img src={Login} alt="login" className="login" />
+        </Link>
+      </div>
+    </nav>
+  );
 }
 
 export default Nav;

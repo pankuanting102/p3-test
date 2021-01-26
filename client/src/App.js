@@ -1,72 +1,105 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Comments from "./pages/Comments";
-import { Container } from "./components/Grid";
-import Comment from "./pages/Comment";
+// import Comments from "./pages/Dashboard";
+// import { Container } from "./components/Grid";
+// import Comment from "./pages/Comment";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import Head from "./components/Head";
+import Footer from "./components/Footer";
 import userAPI from "./utils/userAPI";
-import ProtectedRoute from "./components/ProtectedRoute"
+// import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./pages/Home";
+// import TheScene from "./pages/TheScene";
+import TheChallenge from "./pages/TheChallenge";
+import Dashboard from "./pages/Dashboard";
+import BannerQuote from "./components/BannerQuote";
 
+
+// import ReactDOM from "react-dom";
 function App() {
-	const [userState, setUserState] = useState({});
+  const [userState, setUserState] = useState({})
+  console.log(userState)
+  useEffect(() => {
+    // auth user on first render
+    authenticate()
+  }, []);
 
-   useEffect(() => { 
-	   // auth user on first render
-      authenticate() 
-   }, []);
+  //user authentication
+  function authenticate() {
+    return userAPI.authenticateUser()
+      .then(({ data }) => {
+        console.log('user:', data);
+        setUserState(data);
+      })
+      .catch((err) => console.log('registered user:', err.response));
+  }
+  console.log(userState)
+  return (
+    <Router>
+      <BannerQuote />
+      <Head />
 
-	//user authentication
-	function authenticate() {
-		return userAPI.authenticateUser()
-			.then(({ data }) => {
-				console.log('user:', data );
-            setUserState(data);
-			})
-			.catch((err) => console.log('registered user:', err.response));
-	}
+      <Switch>
+        <Route
+          exact path='/'
+          component={Home}
+        />
+        <Route
+          exact path='/TheChallenge'
+          component={() => (<TheChallenge userState={userState} setUserState={setUserState} />)}
+        />
+        <Route
+          exact path='/Login'
+          render={props => (
 
-	return (
-		<Router>
-			<Head />
-			<Container>
-				<Switch>
-					<Route
-						exact
-						path='/'
-						render={ props => (
-							<Login
-								{...props}
-								userState={userState}
-								setUserState={setUserState}
-							/>
-						)}
-					/>
-					<Route
-						exact
-						path='/signup'
-						render={ props => (
-							<Signup
-								{...props}
-								authenticate={authenticate}
-								user={userState}
-							/>
-						)}
-					/>
-               <ProtectedRoute exact path={["/", "/comments"]}>
-                  <Comments {...userState} />
-               </ProtectedRoute>
-               <ProtectedRoute exact path='/comments/:id' >
-                  <Comment {...userState} />
-               </ProtectedRoute>
-					<Route component={NoMatch} />
-				</Switch>
-			</Container>
-         { userState.email ? <Redirect to="/comments" /> : <></>}
-		</Router>
-	);
+            <Login
+              {...props}
+              authenticate={authenticate}
+              user={userState}
+              setUserState={setUserState}
+            />
+          )}
+
+        />
+        <Route
+          exact path='/signup'
+          render={props => (
+
+            <Signup
+              {...props}
+              authenticate={authenticate}
+              user={userState}
+            
+            />
+
+          )}
+        />
+        <Route exact path={["/", "/Dashboard"]}>
+
+          <Dashboard {...userState} />
+
+        </Route>
+
+        <Route exact path='/Dashboard' >
+
+          <Dashboard userState={userState} />
+
+        </Route>
+
+        <Route component={NoMatch} />
+
+        
+      </Switch>
+
+           
+      {userState.email ? <Redirect to="/Dashboard" /> : <></>}
+
+     
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;

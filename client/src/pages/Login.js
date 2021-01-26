@@ -3,70 +3,71 @@ import React, { Component } from "react";
 import userAPI from "../utils/userAPI";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { Input, FormBtn } from "../components/Form";
+// import { Input, FormBtn } from "../components/Form";
 
 class Login extends Component {
   state = {
-      email: "",
-      password: ""
-    };
-    
-  componentDidMount() {
- 
-  }
-  
-  handleInputChange = event => {
+    email: "",
+    password: "",
+  };
+
+  componentDidMount() {}
+
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.email && this.state.password) {
-      userAPI.loginUser({
-        email: this.state.email,
-        password: this.state.password
-      })
-        .then(res => {
-          if(res.status === 200 ){
-             this.props.setUserState(res.data)
+      userAPI
+        .loginUser({
+          email: this.state.email,
+          password: this.state.password,
+          name: this.state.name,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            this.props.setUserState(res.data);
           }
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
   };
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
-          <Col size="12">
+          <Col size="6">
             <form>
-              <Input
+              <input
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
-                placeholder="email (required)"
+                placeholder="Email"
               />
-              <Input
+              <input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="(required)"
+                placeholder="Password"
                 type="password"
               />
-              
-              <FormBtn
+
+              <button
+                className="cta"
                 disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
                 Log in
-              </FormBtn>
-             <Link to="/signup">
-               <FormBtn> Signup </FormBtn>
-             </Link>
+              </button>
+              <Link to="/signup">
+                <button className="cta"> Signup </button>
+              </Link>
             </form>
           </Col>
         </Row>
