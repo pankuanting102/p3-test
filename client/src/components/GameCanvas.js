@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import Matter, { Events } from "matter-js";
-
 import trashObjArr from "../utils/trashObjArr"
-// import binObjArr from "../utils/binArr"
+import userAPI from "../utils/userAPI";
 
 // ============================================================
 // MATTER.JS  (useEffect)
 
-const GameCanvas = ({ gameScore, setGameScore, setMessage }) => {
+const GameCanvas = ({ setGameScore, setMessage }) => {
 
   const boxRef = useRef(null)
 
@@ -17,7 +16,7 @@ const GameCanvas = ({ gameScore, setGameScore, setMessage }) => {
     // module aliases
     let Engine = Matter.Engine
     let Render = Matter.Render
-    let Runner = Matter.Runner
+    // let Runner = Matter.Runner
     let World = Matter.World
     let Bodies = Matter.Bodies
     let Mouse = Matter.Mouse
@@ -107,7 +106,7 @@ const GameCanvas = ({ gameScore, setGameScore, setMessage }) => {
     ]);
 
     // INITIAL TRASH
-    World.add(engine.world, [trashObjArr[1], trashObjArr[3], trashObjArr[2], trashObjArr[0], trashObjArr[2]]);
+    // World.add(engine.world, [trashObjArr[1], trashObjArr[3], trashObjArr[2], trashObjArr[0], trashObjArr[2]]);
 
     // MOUSE CONTROL
     var mouse = Mouse.create(render.canvas),
