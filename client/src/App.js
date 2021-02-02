@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-// import Comments from "./pages/Dashboard";
-// import { Container } from "./components/Grid";
-// import Comment from "./pages/Comment";
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
@@ -11,7 +8,6 @@ import Footer from "./components/Footer";
 import userAPI from "./utils/userAPI";
 // import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
-// import TheScene from "./pages/TheScene";
 import TheChallenge from "./pages/TheChallenge";
 import Dashboard from "./pages/Dashboard";
 import BannerQuote from "./components/BannerQuote";
@@ -19,8 +15,10 @@ import BannerQuote from "./components/BannerQuote";
 
 // import ReactDOM from "react-dom";
 function App() {
+
   const [userState, setUserState] = useState({})
-  console.log(userState)
+
+  // console.log(userState)
   useEffect(() => {
     // auth user on first render
     authenticate()
@@ -28,18 +26,30 @@ function App() {
 
   //user authentication
   function authenticate() {
-    return userAPI.authenticateUser()
+    return userAPI
+      .authenticateUser()
       .then(({ data }) => {
         console.log('user:', data);
         setUserState(data);
       })
       .catch((err) => console.log('registered user:', err.response));
   }
-  console.log(userState)
+  // console.log(userState)
+
+  // logout user
+  function logout() {
+    console.log("logout");
+    userAPI
+      .logout()
+      .then(window.location.reload())
+  }
+
+
   return (
     <Router>
       <BannerQuote />
-      <Head />
+
+      <Head logout={logout} />
 
       <Switch>
         <Route
@@ -71,7 +81,7 @@ function App() {
               {...props}
               authenticate={authenticate}
               user={userState}
-            
+
             />
 
           )}
@@ -90,13 +100,13 @@ function App() {
 
         <Route component={NoMatch} />
 
-        
+
       </Switch>
 
-           
+
       {userState.email ? <Redirect to="/Dashboard" /> : <></>}
 
-     
+
       <Footer />
     </Router>
   );
