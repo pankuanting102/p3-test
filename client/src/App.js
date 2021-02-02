@@ -41,7 +41,7 @@ function App() {
     console.log("logout");
     userAPI
       .logout()
-      .then(window.location.reload())
+      .then(window.location.href = "/")
   }
 
 
