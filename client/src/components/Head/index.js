@@ -18,7 +18,7 @@ function Nav({ logout }) {
           <img src={Login} alt="login" className="login" />
         </Link>
 
-        <Link to="/Logout" >
+        <Link to="/" >                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
           <button onClick={() => { logout() }} >Logout</button>
 
