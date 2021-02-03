@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import Matter, { Events } from "matter-js";
-import trashObjArr from "../utils/trashObjArr"
-import userAPI from "../utils/userAPI";
+
 
 // ============================================================
 // MATTER.JS  (useEffect)
@@ -16,7 +15,6 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
     // module aliases
     let Engine = Matter.Engine
     let Render = Matter.Render
-    // let Runner = Matter.Runner
     let World = Matter.World
     let Bodies = Matter.Bodies
     let Mouse = Matter.Mouse
@@ -105,9 +103,6 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
 
     ]);
 
-    // INITIAL TRASH
-    // World.add(engine.world, [trashObjArr[1], trashObjArr[3], trashObjArr[2], trashObjArr[0], trashObjArr[2]]);
-
     // MOUSE CONTROL
     var mouse = Mouse.create(render.canvas),
       mouseConstraint = MouseConstraint.create(engine, {
@@ -124,7 +119,6 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
     World.add(engine.world, mouseConstraint);
 
     //  TRASH CANS
-
     const bin_normal = Bodies.rectangle(220, 550, 80, 100,
       {
         isStatic: true,
@@ -462,4 +456,4 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
   )
 }
 
-export default GameCanvas
+export default GameCanvas;
