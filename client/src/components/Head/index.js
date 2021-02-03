@@ -14,7 +14,7 @@ function Nav({ logout }) {
           WASTE OF TIME
         </Link>
 
-        <Link to="/Login" >
+        <Link to="/login" >
           <img src={Login} alt="login" className="login" />
         </Link>
 

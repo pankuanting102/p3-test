@@ -32,7 +32,7 @@ function Dashboard(props) {
       <PointText/>
       <TwitterBtn />
       <button className="cta">
-	  <Link to="/TheChallenge" style={{color:"white", }}>Play Again</Link>
+	  <Link to="/the-callenge" style={{color:"white", }}>Play Again</Link>
    	</button>
 	  </div>
     </div>
