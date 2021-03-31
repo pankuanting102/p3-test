@@ -17,7 +17,7 @@ function Home() {
           <div className="split-title">RECYCLING CHALLENGE</div>
 
           <button className="cta">
-            <Link to="/TheChallenge" style={{ color: "white" }}>Enter to Play </Link>
+            <Link to="/the-challenge" style={{ color: "white" }}>Enter to Play </Link>
           </button>
 
         </div>

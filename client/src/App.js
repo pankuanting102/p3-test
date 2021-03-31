@@ -57,11 +57,11 @@ function App() {
           component={Home}
         />
         <Route
-          exact path='/TheChallenge'
+          exact path='/the-challenge'
           component={() => (<TheChallenge userState={userState} setUserState={setUserState} />)}
         />
         <Route
-          exact path='/Login'
+          exact path='/login'
           render={props => (
 
             <Login
@@ -94,7 +94,7 @@ function App() {
 
         <Route exact path='/Dashboard' >
 
-          <Dashboard userState={userState} />
+          <Dashboard userState={userState}  />
 
         </Route>
 
