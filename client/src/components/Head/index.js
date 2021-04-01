@@ -10,19 +10,19 @@ function Nav({ logout }) {
     <nav className="topnav">
 
       <div>
-        <Link to="/" className="nav-left" style={{ color: "black" }}>
+        <Link to="/" className="nav-left" style={{ color: "#0B4245" }}>
           WASTE OF TIME
         </Link>
 
         <Link to="/login" >
           <img src={Login} alt="login" className="login" />
         </Link>
-
+{/* 
         <Link to="/" >                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
           <button onClick={() => { logout() }} >Logout</button>
 
-        </Link>
+        </Link> */}
 
       </div>
     </nav>
