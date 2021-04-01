@@ -20,6 +20,7 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
     let Mouse = Matter.Mouse
     let MouseConstraint = Matter.MouseConstraint
     let Composite = Matter.Composite
+    let Common = Matter.Common
 
     let engine = Engine.create(
       {
@@ -228,7 +229,7 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
     // MOUSE EVENT (mousedown)
     Matter.Events.on(mouseConstraint, "mousedown", function (event) {
       World.add(engine.world, [
-        Bodies.circle(400, 50, 30, {
+        Bodies.circle(Common.random(100, 1200), 50, 30, {
           render: {
             sprite: {
               texture: './banana_1.svg',
@@ -241,7 +242,8 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
           },
           label: "food"
         }),
-        Bodies.circle(800, 50, 30, {
+        
+        Bodies.circle(Common.random(100, 1200), 50, 30, {
           render: {
             sprite: {
               texture: './metal_can_1.svg',
@@ -254,7 +256,8 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
           },
           label: "metal"
         }),
-        Bodies.circle(510, 10, 50, {
+
+        Bodies.circle(Common.random(100, 1200), 10, 50, {
           restitution: 0.5,
           label: "normal",
           render: {
@@ -268,7 +271,8 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
             category: 8
           }
         }),
-        Bodies.circle(510, 10, 50, {
+
+        Bodies.circle(Common.random(100, 1200), 10, 50, {
           restitution: 0.5,
           label: "normal",
           render: {
@@ -282,9 +286,10 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
             category: 8
           }
         }),
-        Bodies.circle(510, 10, 50, {
+
+        Bodies.circle(Common.random(100, 1200), 10, 50, {
           restitution: 0.5,
-          label: "normal",
+          label: "metal",
           render: {
             sprite: {
               texture: './tire.svg',
@@ -297,9 +302,9 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
           }
         }),
 
-        Bodies.circle(510, 10, 50, {
+        Bodies.circle(Common.random(100, 1200), 10, 50, {
           restitution: 0.5,
-          label: "normal",
+          label: "plastic",
           render: {
             sprite: {
               texture: './lighter.svg',
