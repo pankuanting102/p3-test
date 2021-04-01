@@ -7,11 +7,10 @@ const GameOver = ({ gameScore }) => {
   return (
     <div>
       Game Over! Summary
-      <div>{gameScore}</div>
-      <button style={{marginTop: "30px" }}>
-        <Link to="/Dashboard" className="cta" style={{ color: "white" }}>
-          Confirm Score
-        </Link>
+      <div className="score">{gameScore}</div>
+      <button style={{marginTop: "60px" }} className="cta-outline">
+<Link to="/Dashboard"></Link>
+        Confirm Score
       </button>
     </div>
   );
