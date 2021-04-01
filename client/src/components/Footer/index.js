@@ -10,7 +10,7 @@ function Footer() {
 
       <div className="ft-itm-right footer-right">
       
-        <a target="_blank" href="https://github.com/rialee/waste-of-time">GitHub</a></div>
+        <a style={{color: "#0B4245"}} target="_blank" href="https://github.com/rialee/waste-of-time">GitHub</a></div>
     </footer>
   );
 }

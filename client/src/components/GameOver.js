@@ -1,16 +1,19 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-
+import "./component.css";
 const GameOver = ({ gameScore }) => {
   // change trigger above
 
   return (
     <div>
-      Game Over! Summary
+      <div className="go">Game Over!</div>
       <div className="score">{gameScore}</div>
-      <button style={{marginTop: "60px" }} className="cta-outline">
-<Link to="/Dashboard"></Link>
+      <button >
+        <Link to="/Dashboard">
+          <div className="cta-outline">
         Confirm Score
+        </div>
+        </Link>
       </button>
     </div>
   );
