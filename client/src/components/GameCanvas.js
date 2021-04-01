@@ -111,7 +111,6 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
           stiffness: 0.2,
           render: {
             visible: false,
-
           }
         },
       });
@@ -268,7 +267,50 @@ const GameCanvas = ({ setGameScore, setMessage }) => {
           collisionFilter: {
             category: 8
           }
-        })
+        }),
+        Bodies.circle(510, 10, 50, {
+          restitution: 0.5,
+          label: "normal",
+          render: {
+            sprite: {
+              texture: './fish_bone.svg',
+              xScale: (0.3),
+              yScale: (0.3)
+            }
+          },
+          collisionFilter: {
+            category: 8
+          }
+        }),
+        Bodies.circle(510, 10, 50, {
+          restitution: 0.5,
+          label: "normal",
+          render: {
+            sprite: {
+              texture: './tire.svg',
+              xScale: (0.3),
+              yScale: (0.3)
+            }
+          },
+          collisionFilter: {
+            category: 8
+          }
+        }),
+
+        Bodies.circle(510, 10, 50, {
+          restitution: 0.5,
+          label: "normal",
+          render: {
+            sprite: {
+              texture: './lighter.svg',
+              xScale: (0.3),
+              yScale: (0.3)
+            }
+          },
+          collisionFilter: {
+            category: 8
+          }
+        }),
       ])
     })
 
